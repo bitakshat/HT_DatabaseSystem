@@ -3,11 +3,9 @@
 
 int main(void) {
     HashTable ht;
-    std::string str = "akshat";
-    int index = ht.calculateHash(str);
+    ht.insertData("akshat", 19);
+    int index = ht.calculateHash("akshat");
 
-    ht.insertData(str, 19);
-    ht.insertData("hello", 20);
-    std::cout << ht.db[106] << std::endl;
+    ht.showData();
     return 0;
 }

@@ -1,9 +1,4 @@
 
-#include <cmath>
-#include <cstring>
-#include <string>
-#include <vector>
-
 #include "./hashtable.h"
 
 int HashTable::calculateHash(std::string s) {
@@ -26,9 +21,17 @@ int HashTable::calculateHash(std::string s) {
 }
 
 void HashTable::insertData(std::string s, int age) {
-    Storage st;
-    st.name = s;
-    st.age = age;
+    Storage st(s, age);
+
     int index = calculateHash(s);
-    db[index] = st;
+    if ((db[index] != nullptr) && index <= 1001) {
+        index += 1;
+    }
+    db[index] = &st;
+    std::cout << "from insertData: " << &st << std::endl;
+}
+
+void HashTable::showData() {
+    Storage *data = db[106];
+    std::cout << "from showdata: " << data << std::endl;
 }
